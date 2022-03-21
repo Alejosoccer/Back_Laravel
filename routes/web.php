@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//para enviar los correos
+Route::get('send-mail', function () {
+
+    $details = [
+        'title' => 'Email enviado por Turisk',
+        'body' => 'Gracias por hacer tu reserva para mas informacion revisa tu perfil'
+        
+    ];
+
+    \Mail::to('aelr238@gmail.com')->send(new \App\Mail\MyTestMail($details));
+
+    dd("Correo Enviado Correctamente.");
+});
